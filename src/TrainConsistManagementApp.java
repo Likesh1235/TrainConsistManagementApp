@@ -1,49 +1,24 @@
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
-        System.out.println("=================================");
-        System.out.println("UC2 - Add Passenger Bogies to Train");
-        System.out.println("=================================\n");
+        System.out.println("UC3 - Track Unique Bogie IDs\n");
 
-        ArrayList<String> bogies = new ArrayList<>();
+        Set<String> bogies = new HashSet<>();
 
-        bogies.add("Sleeper");
-        bogies.add("AC Chair");
-        bogies.add("First Class");
+        bogies.add("BG101");
+        bogies.add("BG102");
+        bogies.add("BG103");
+        bogies.add("BG104");
 
-        System.out.println("After Adding Bogies:");
-        System.out.print("Passenger Bogies : [");
-        for (int i = 0; i < bogies.size(); i++) {
-            System.out.print(bogies.get(i));
-            if (i < bogies.size() - 1) System.out.print(", ");
-        }
-        System.out.println("]\n");
+        bogies.add("BG101");
+        bogies.add("BG102");
 
-        bogies.remove("AC Chair");
+        System.out.println("Bogie IDs After Insertion:");
+        System.out.println(bogies);
 
-        System.out.println("After Removing 'AC Chair':");
-        System.out.print("Passenger Bogies : [");
-        for (int i = 0; i < bogies.size(); i++) {
-            System.out.print(bogies.get(i));
-            if (i < bogies.size() - 1) System.out.print(", ");
-        }
-        System.out.println("]\n");
-
-        boolean found = bogies.contains("Sleeper");
-
-        System.out.println("Checking if 'Sleeper' exists:");
-        System.out.println("Contains Sleeper? : " + found + "\n");
-
-        System.out.println("Final Train Passenger Consist:");
-        System.out.print("[");
-        for (int i = 0; i < bogies.size(); i++) {
-            System.out.print(bogies.get(i));
-            if (i < bogies.size() - 1) System.out.print(", ");
-        }
-        System.out.println("]\n");
-
-        System.out.println("UC2 operations completed successfully...");
+        System.out.println("\nDuplicates are automatically ignored.");
     }
 }
