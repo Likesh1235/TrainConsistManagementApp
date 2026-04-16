@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.*;
 
-public class TrainConsistApp {
+public class TrainConsistManagementApp {
 
     static class Bogie {
         String type;
