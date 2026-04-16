@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TrainConsistApp {
+public class TrainConsistManagementApp {
 
     static class GoodsBogie {
         String type;
