@@ -1,12 +1,13 @@
-import java.util.Arrays;
-
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("==========================================");
-        System.out.println(" UC19 - Binary Search for Bogie ID ");
+        System.out.println(" UC20 - Exception Handling During Search ");
         System.out.println("==========================================\n");
+
+
+        String[] bogieIds = {};
 
 import java.util.*;
 
@@ -22,20 +23,20 @@ public class TrainConsistManagementApp {
 
         Arrays.sort(bogieIds);
 
+
         String searchId = "BG309";
 
-        int low = 0;
-        int high = bogieIds.length - 1;
+        if (bogieIds.length == 0) {
+            throw new IllegalStateException("No bogies available in train consist.");
+        }
+
         boolean found = false;
 
-        while (low <= high) {
-            int mid = (low + high) / 2;
-
-            int result = bogieIds[mid].compareTo(searchId);
-
-            if (result == 0) {
+        for (String id : bogieIds) {
+            if (id.equals(searchId)) {
                 found = true;
                 break;
+
             } else if (result < 0) {
                 low = mid + 1;
             } else {
@@ -61,20 +62,16 @@ public class TrainConsistManagementApp {
             } finally {
                 System.out.println("Cargo validation completed for " + shape + " bogie");
 
+
             }
         }
     }
 
 
-        System.out.println("Available Bogie IDs:");
-        for (String id : bogieIds) {
-            System.out.println(id);
-        }
-
         if (found) {
-            System.out.println("\nBogie " + searchId + " found in train consist.");
+            System.out.println("Bogie " + searchId + " found.");
         } else {
-            System.out.println("\nBogie " + searchId + " not found in train consist.");
+            System.out.println("Bogie " + searchId + " not found.");
         }
 
     public static void main(String[] args) {
