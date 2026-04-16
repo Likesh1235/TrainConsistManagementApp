@@ -46,6 +46,8 @@ public class TrainConsistManagementApp {
         goodsBogies.add(new GoodsBogie("Box", "Grain"));
         goodsBogies.add(new GoodsBogie("Cylindrical", "Coal"));
 
+        System.out.println("\nUC15 runtime handling completed...");
+
         System.out.println("Goods Bogies in Train:");
         for (GoodsBogie g : goodsBogies) {
             System.out.println(g.type + " -> " + g.cargo);
@@ -63,5 +65,6 @@ public class TrainConsistManagementApp {
         }
 
         System.out.println("\nUC12 safety validation completed...");
+
     }
 }
