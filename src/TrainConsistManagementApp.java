@@ -1,91 +1,46 @@
 import java.util.*;
 
-
-
-    public static void main(String[] args) {
-
-        System.out.println("==========================================");
-        System.out.println(" UC16 - Manual Sorting using Bubble Sort ");
-        System.out.println("==========================================\n");
-
-        int[] capacities = {72, 56, 24, 70, 60};
-
-        System.out.println("Original Capacities:");
-        for (int c : capacities) {
-            System.out.print(c + " ");
-        }
-
-        for (int i = 0; i < capacities.length - 1; i++) {
-            for (int j = 0; j < capacities.length - i - 1; j++) {
-                if (capacities[j] > capacities[j + 1]) {
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
-
-
-
 public class TrainConsistManagementApp {
 
-    static class CargoSafetyException extends RuntimeException {
-        CargoSafetyException(String message) {
-            super(message);
-        }
-    }
-
     static class GoodsBogie {
-        String shape;
+        String type;
         String cargo;
 
-        GoodsBogie(String shape) {
-            this.shape = shape;
-        }
-
-        void assignCargo(String cargo) {
-            try {
-                if (shape.equals("Rectangular") && cargo.equals("Petroleum")) {
-                    throw new CargoSafetyException("Unsafe cargo assignment!");
-                }
-                this.cargo = cargo;
-                System.out.println("Cargo assigned successfully -> " + cargo);
-            } catch (CargoSafetyException e) {
-                System.out.println("Error: " + e.getMessage());
-            } finally {
-                System.out.println("Cargo validation completed for " + shape + " bogie");
-            }
+        GoodsBogie(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
         }
     }
 
     public static void main(String[] args) {
 
         System.out.println("=================================");
-        System.out.println("UC15 - Safe Cargo Assignment");
+        System.out.println("UC12 - Safety Compliance Check for Goods Bogies");
         System.out.println("=================================\n");
 
-        GoodsBogie g1 = new GoodsBogie("Cylindrical");
-        g1.assignCargo("Petroleum");
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
 
-        System.out.println();
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Open", "Coal"));
+        goodsBogies.add(new GoodsBogie("Box", "Grain"));
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Coal"));
 
-        GoodsBogie g2 = new GoodsBogie("Rectangular");
-        g2.assignCargo("Petroleum");
-
-
-        System.out.println("\nUC15 runtime handling completed...");
-
-        for (String id : bogieIds) {
-            if (id.equals(searchId)) {
-                found = true;
-                break;
-
-            }
+        System.out.println("Goods Bogies in Train:");
+        for (GoodsBogie g : goodsBogies) {
+            System.out.println(g.type + " -> " + g.cargo);
         }
 
-        if (found) {
-            System.out.println("\nBogie " + searchId + " found in train consist.");
+        boolean isSafe = goodsBogies.stream()
+                .allMatch(g -> !g.type.equals("Cylindrical") || g.cargo.equals("Petroleum"));
+
+        System.out.println("\nSafety Compliance Status: " + isSafe);
+
+        if (isSafe) {
+            System.out.println("Train formation is SAFE.");
         } else {
-            System.out.println("\nBogie " + searchId + " not found in train consist.");
+            System.out.println("Train formation is NOT SAFE.");
         }
 
+        System.out.println("\nUC12 safety validation completed...");
     }
 }
