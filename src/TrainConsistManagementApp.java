@@ -1,4 +1,20 @@
+
+import java.util.*;
+
 public class TrainConsistManagementApp {
+
+    static class GoodsBogie {
+        String type;
+        String cargo;
+
+        GoodsBogie(String type, String cargo) {
+            this.type = type;
+            this.cargo = cargo;
+        }
+    }
+
+public class TrainConsistManagementApp {
+
 
     public static void main(String[] args) {
 
