@@ -1,7 +1,6 @@
-
 import java.util.*;
 
-public class TrainConsistManagementApp {
+public class TrainConsistApp {
 
     static class GoodsBogie {
         String type;
@@ -13,37 +12,35 @@ public class TrainConsistManagementApp {
         }
     }
 
-public class TrainConsistManagementApp {
-
-
     public static void main(String[] args) {
 
-        System.out.println("==========================================");
-        System.out.println(" UC18 - Linear Search for Bogie ID ");
-        System.out.println("==========================================\n");
+        System.out.println("=================================");
+        System.out.println("UC12 - Safety Compliance Check for Goods Bogies");
+        System.out.println("=================================\n");
 
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
 
-        String searchId = "BG309";
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Open", "Coal"));
+        goodsBogies.add(new GoodsBogie("Box", "Grain"));
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Coal"));
 
-        System.out.println("Available Bogie IDs:");
-        for (String id : bogieIds) {
-            System.out.println(id);
+        System.out.println("Goods Bogies in Train:");
+        for (GoodsBogie g : goodsBogies) {
+            System.out.println(g.type + " -> " + g.cargo);
         }
 
-        boolean found = false;
+        boolean isSafe = goodsBogies.stream()
+                .allMatch(g -> !g.type.equals("Cylindrical") || g.cargo.equals("Petroleum"));
 
-        for (String id : bogieIds) {
-            if (id.equals(searchId)) {
-                found = true;
-                break;
-            }
-        }
+        System.out.println("\nSafety Compliance Status: " + isSafe);
 
-        if (found) {
-            System.out.println("\nBogie " + searchId + " found in train consist.");
+        if (isSafe) {
+            System.out.println("Train formation is SAFE.");
         } else {
-            System.out.println("\nBogie " + searchId + " not found in train consist.");
+            System.out.println("Train formation is NOT SAFE.");
         }
+
+        System.out.println("\nUC12 safety validation completed...");
     }
 }
